@@ -38,3 +38,7 @@ $ python3 main.py
 请输入你的名字（直接回车使用默认值）:
 Hello, World!
 ```
+## 运行方式
+```bash
+python3 main.py
+```
