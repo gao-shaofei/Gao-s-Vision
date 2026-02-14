@@ -7,6 +7,37 @@
 - 输出 `Hello, <name>!`
 - 如果用户直接回车，则输出 `Hello, World!`
 
+## 环境要求
+- Python 3.8+
+
+## 快速开始
+在项目根目录运行：
+
+```bash
+python3 main.py
+```
+
+程序会提示你输入名字：
+
+```text
+请输入你的名字（直接回车使用默认值）:
+```
+
+### 示例 1：输入名字
+
+```bash
+$ python3 main.py
+请输入你的名字（直接回车使用默认值）: Alice
+Hello, Alice!
+```
+
+### 示例 2：直接回车
+
+```bash
+$ python3 main.py
+请输入你的名字（直接回车使用默认值）:
+Hello, World!
+```
 ## 运行方式
 ```bash
 python3 main.py
