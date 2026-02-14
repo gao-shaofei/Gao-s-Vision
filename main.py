@@ -1,9 +1,8 @@
-"""Simple CLI entrypoint for hello-codex."""
+"""Simple CLI entrypoint for hello-codex v1."""
 
 from greet import build_greeting
 
-EXIT_COMMANDS_EN = {"exit", "quit", "q"}
-EXIT_COMMAND_CN = "退出"
+EXIT_COMMANDS = {"exit", "quit", "q", "退出"}
 
 
 def main() -> None:
@@ -11,14 +10,15 @@ def main() -> None:
     print("输入 exit / quit / q / 退出 可结束程序。")
 
     while True:
-        raw = input("请输入你的名字（直接回车使用默认值）: ")
-        normalized = raw.strip()
-
-        if normalized.lower() in EXIT_COMMANDS_EN or normalized == EXIT_COMMAND_CN:
+        name = input("请输入你的名字（直接回车使用默认值）: ").strip()
+        if name.lower() in EXIT_COMMANDS or name in EXIT_COMMANDS:
             print("对话已结束，再见！")
             break
+        print(build_greeting(name))
 
-        print(build_greeting(normalized))
+def main() -> None:
+    name = input("请输入你的名字（直接回车使用默认值）: ")
+    print(build_greeting(name))
 
 
 if __name__ == "__main__":
