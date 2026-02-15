@@ -229,7 +229,7 @@ function renderIndex(posts: Post[]): string {
     })
     .join("\n");
 
-  const body = `      <header>
+  const body = `      <header class="site-header">
         <h1>Gao's Vision</h1>
         <p class="muted">郜韶飞的个人博客，记录有趣的想法与发现。</p>
       </header>
@@ -298,9 +298,18 @@ body {
   padding: 3rem 1.2rem 4rem;
 }
 
-header {
+.site-header {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
   margin-bottom: 1.5rem;
+}
+
+.site-header h1,
+.site-header p {
+  margin: 0;
 }
 
 h1,
