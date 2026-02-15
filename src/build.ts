@@ -40,7 +40,10 @@ function formatInline(text: string): string {
     .replace(/\[([^\]]+?)\]\(([^)]+?)\)/g, '<a href="$2">$1</a>');
 }
 
-function parseFrontMatter(raw: string): { meta: Partial<PostMeta>; body: string } {
+function parseFrontMatter(raw: string): {
+  meta: Partial<PostMeta>;
+  body: string;
+} {
   if (!raw.startsWith("---\n")) {
     return { meta: {}, body: raw };
   }
@@ -140,7 +143,9 @@ function markdownToHtml(markdown: string): string {
 
     if (line.startsWith("> ")) {
       closeLists();
-      out.push(`<blockquote>${formatInline(line.slice(2).trim())}</blockquote>`);
+      out.push(
+        `<blockquote>${formatInline(line.slice(2).trim())}</blockquote>`,
+      );
       continue;
     }
 
@@ -182,7 +187,11 @@ function markdownToHtml(markdown: string): string {
   return out.join("\n");
 }
 
-function pageTemplate(title: string, stylesheetHref: string, content: string): string {
+function pageTemplate(
+  title: string,
+  stylesheetHref: string,
+  content: string,
+): string {
   return `<!doctype html>
 <html lang="zh-CN">
   <head>
@@ -206,7 +215,7 @@ function renderPost(post: Post): string {
         <p class="muted">${escapeHtml(post.date)}</p>
         ${post.html}
       </article>`;
-  return pageTemplate(`${post.title} | My Blog`, "../style.css", body);
+  return pageTemplate(`${post.title} | Gao's Vision`, "../style.css", body);
 }
 
 function renderIndex(posts: Post[]): string {
@@ -221,8 +230,8 @@ function renderIndex(posts: Post[]): string {
     .join("\n");
 
   const body = `      <header>
-        <h1>My Blog</h1>
-        <p class="muted">一个用 TypeScript 生成的静态博客</p>
+        <h1>Gao's Vision</h1>
+        <p class="muted">郜韶飞的个人博客，记录有趣的想法与发现。</p>
       </header>
       <section>
         <ul class="post-list">
@@ -230,7 +239,7 @@ ${items}
         </ul>
       </section>`;
 
-  return pageTemplate("My Blog", "./style.css", body);
+  return pageTemplate("Gao's Vision", "./style.css", body);
 }
 
 function loadPosts(): Post[] {
@@ -287,6 +296,11 @@ body {
   max-width: 760px;
   margin: 0 auto;
   padding: 3rem 1.2rem 4rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 h1,
