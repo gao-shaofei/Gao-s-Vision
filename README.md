@@ -1,62 +1,59 @@
-# hello
+# minimal-ts-blog
 
-一个用于练习 Codex 的最小 `Hello World` 项目（v1）。
+极简个人静态博客：本地写 Markdown，用 TypeScript 生成 HTML，GitHub Pages 直接从仓库根目录发布。
 
-## 功能
-- 在命令行中循环读取用户名字
-- 输出 `Hello, <name>!`
-- 如果用户直接回车，则输出 `Hello, World!`
-- 输入退出命令（`exit` / `quit` / `q` / `退出`）后结束程序
-- 在命令行中读取用户名字
-- 输出 `Hello, <name>!`
-- 如果用户直接回车，则输出 `Hello, World!`
-
-## 环境要求
-- Python 3.8+
-
-## 快速开始
-在项目根目录运行：
-
-```bash
-python3 main.py
-```
-
-程序会不断提示你输入名字，直到你输入退出命令。
-
-### 示例：连续对话并退出
-
-```bash
-$ python3 main.py
-欢迎使用 Hello 程序，输入名字即可打招呼。
-输入 exit / quit / q / 退出 可结束程序。
-请输入你的名字（直接回车使用默认值）: Alice
-Hello, Alice!
-请输入你的名字（直接回车使用默认值）:
-Hello, World!
-请输入你的名字（直接回车使用默认值）: 退出
-对话已结束，再见！
-程序会提示你输入名字：
+## 目录
 
 ```text
-请输入你的名字（直接回车使用默认值）:
+.
+├─ content/        # 文章源文件（.md）
+├─ src/build.ts    # 构建脚本
+├─ posts/          # 构建产物：文章页
+├─ index.html      # 构建产物：首页
+├─ style.css       # 构建产物：样式
+├─ package.json
+└─ tsconfig.json
 ```
 
-### 示例 1：输入名字
+## 使用
+
+1. 安装依赖
 
 ```bash
-$ python3 main.py
-请输入你的名字（直接回车使用默认值）: Alice
-Hello, Alice!
+npm install
 ```
 
-### 示例 2：直接回车
+2. 写文章
+- 在 `content/` 下新增 `.md` 文件，文件名就是文章 slug。
+- 可选 front matter：
+
+```md
+---
+title: 文章标题
+date: 2026-02-15
+summary: 一句话简介
+---
+
+# 正文
+```
+
+3. 构建
 
 ```bash
-$ python3 main.py
-请输入你的名字（直接回车使用默认值）:
-Hello, World!
+npm run build
 ```
-## 运行方式
-```bash
-python3 main.py
-```
+
+构建输出：
+- `index.html`
+- `style.css`
+- `posts/*.html`
+
+## GitHub Pages 发布
+
+在仓库设置中配置：
+- `Settings -> Pages`
+- `Source`: `Deploy from a branch`
+- `Branch`: `main`
+- `Folder`: `/ (root)`
+
+之后 push 到 `main` 即可发布。

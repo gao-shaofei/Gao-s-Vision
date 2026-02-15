@@ -1,0 +1,13 @@
+{
+  "name": "minimal-ts-blog",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal static blog generator with TypeScript",
+  "scripts": {
+    "build": "tsc && node build/build.js",
+    "clean": "rm -rf build posts index.html style.css"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
